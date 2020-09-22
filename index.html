@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Copy Text With Alert</title>
+  <style>
+    .copy_text {
+      display: block;
+      background: #ddd;
+      margin: 0 auto;
+      padding: 50px;
+      text-align: center;
+    }
+
+    .copy_text button {
+      background: green;
+      color: aliceblue;
+      border: none;
+      padding: 5px;
+    }
+
+    .copybox {
+      position: absolute;
+      right: 80px;
+      top: 28px;
+      background-color: #2349f1;
+      color: #fff;
+      padding: 7px;
+      border: 2px solid #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 0 2px #2349f1;
+    }
+
+    .copybox input {
+      background: none;
+      border: none;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="copy_text">
+    <h1 id="d">Copy This Text</h1>
+    <button onclick="copyToClipboard('#d')">Click Here</button>
+  </div>
+
+  <script>
+    function copyToClipboard(element) {
+      var $temp = $("<input>");
+      var $divc = $("<div class='copybox'>Success! Your referral link copied.</div>");
+      $("body").append($temp);
+      $("body").append($divc);
+      $temp.val($(element).text()).select();
+      document.execCommand("copy");
+      $temp.remove();
+      setTimeout(function () {
+        $divc.remove();
+      }, 3000);
+    }
+  </script>
+
+
+  <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+</body>
+
+</html>
